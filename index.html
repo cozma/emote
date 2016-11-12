@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>emote</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script src="script.js"></script>
+		<script src="webcam.js"></script>
+        <script src="Chart.js"></script>
+	</head>
+	<body class="homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="footer-wrapper">
+					<div id="header" class="container">
+	                        <!--<h1 id="logo"><a href="index.html">emote</a></h1>-->
+
+					</div>
+	                    <section id="hero" class="container">
+							<header>
+								<h5 style="font-size: 120px;">How do you feel today?</h5>
+							</header>
+
+						</section>
+
+				</div>
+
+			<!-- Features 1 -->
+				<div class="wrapper">
+					<div class="container">
+                        <center><h2><header2>
+
+                        </header2></h2>
+                            <br>
+						<div class="row">
+							<section class="6u 12u(narrower) feature">
+
+                                <div type="file"
+                                     class="upload"
+                                     accept="image/*"
+                                     capture="camera" id="my_camera" style="width:600px; height:400px;"></div>
+                                <!--<div id="my_result"></div>-->
+
+
+                                <script language="JavaScript">
+                                    Webcam.attach( '#my_camera' );
+
+                                    function take_snapshot() {
+                                        Webcam.set({
+                                            upload_name: 'webcam',
+                                            image_format: 'jpeg'
+                                        });
+                                        Webcam.snap( function(data_uri) {
+                                            document.getElementById('my_camera').innerHTML = '<img class="pic" src="'+data_uri+'" />';
+
+                                            readImage(dataURItoBlob(data_uri));
+
+                                        } );
+                                    }
+
+                                    function dataURItoBlob(dataURI) {
+                                        // convert base64/URLEncoded data component to raw binary data held in a string
+                                        var byteString;
+                                        if (dataURI.split(',')[0].indexOf('base64') >= 0)
+                                            byteString = atob(dataURI.split(',')[1]);
+                                        else
+                                            byteString = unescape(dataURI.split(',')[1]);
+
+                                        // separate out the mime component
+                                        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+                                        // write the bytes of the string to a typed array
+                                        var ia = new Uint8Array(byteString.length);
+                                        for (var i = 0; i < byteString.length; i++) {
+                                            ia[i] = byteString.charCodeAt(i);
+                                        }
+
+                                        return new Blob([ia], {type:mimeString});
+                                    }
+                                </script>
+
+                                <a href="javascript:void(take_snapshot())" onclick="$(this).hide();">Take Snapshot</a>
+
+							</section>
+							<section class="6u 12u(narrower) feature">
+
+                                <canvas id="myChart"></canvas>
+
+                                <!--<div class="main">-->
+                                    <!--<img class="pic2" src="default-placeholder.png"/>-->
+                                <!--</div>-->
+
+                                <!--<input-->
+                                        <!--type="file"-->
+                                        <!--class="upload"-->
+                                        <!--accept="image/*"-->
+                                        <!--capture="camera"-->
+                                        <!--onchange="readImage(this.files[0]); console.log(this.files[0]);">-->
+                                <!--</input>-->
+							</section>
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Hackital 2016. All rights reserved.</li><li>Design: Dag</li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
