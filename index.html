@@ -12,7 +12,9 @@
 		<script src="script.js"></script>
 		<script src="webcam.js"></script>
         <script src="Chart.js"></script>
-	</head>
+        <script src="typed.js"></script>
+
+    </head>
 	<body class="homepage">
 		<div id="page-wrapper">
 
@@ -24,7 +26,7 @@
 					</div>
 	                    <section id="hero" class="container">
 							<header>
-								<h5 style="font-size: 120px;">How do you feel today?</h5>
+								<h5 class="element" style="font-size: 120px;"></h5>
 							</header>
 
 						</section>
@@ -37,6 +39,8 @@
                         <center><h2><header2>
 
                         </header2></h2>
+
+
                             <br>
 						<div class="row">
 							<section class="6u 12u(narrower) feature">
@@ -85,12 +89,24 @@
                                     }
                                 </script>
 
-                                <a href="javascript:void(take_snapshot())" onclick="$(this).hide();">Take Snapshot</a>
+                                <a href="javascript:void(take_snapshot())" style="text-decoration:none" onclick="$(this).hide(); hideHint();"><button style="text-decoration:none">Take Snapshot</button></a>
 
 							</section>
-							<section class="6u 12u(narrower) feature">
+							<section  class="6u 12u(narrower) feature">
 
-                                <canvas id="myChart"></canvas>
+                                <canvas id="myChart"></canvas><br>
+                                <h2 class="hint" id="hint" >Use your webcam to take a photo.</h2>
+
+                                <script>
+                                    $(function(){
+                                        $(".element").typed({
+                                            strings: ["How do you feel today?"],
+                                            typeSpeed: 50,
+                                            startDelay: 10,
+                                            cursorChar: ""
+                                        });
+                                    });
+                                </script>
 
                                 <!--<div class="main">-->
                                     <!--<img class="pic2" src="default-placeholder.png"/>-->
@@ -122,7 +138,7 @@
 
 		<!-- Scripts -->
 
-			<script src="assets/js/jquery.min.js"></script>
+			<!--<script src="assets/js/jquery.min.js"></script>-->
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>

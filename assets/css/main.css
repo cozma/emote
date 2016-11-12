@@ -2281,7 +2281,7 @@
 	}
 
 		#footer header.major {
-			margin-bottom: 3em;
+			margin-bottom: 0em;
 		}
 
 /* Copyright */
@@ -2292,8 +2292,8 @@
 		text-align: center;
 		border-top: solid 1px #d2d7dc;
 		color: #a2a7ac;
-		padding-top: 4em;
-		margin-top: 6em;
+		padding-top: 0em;
+		margin-top: 0em;
 	}
 
 /* Normal */
@@ -2330,7 +2330,7 @@
 			}
 
 			#footer-wrapper {
-				padding: 5em 0 5em 0;
+				padding: 0em 0 0em 0;
 			}
 
 	}
@@ -2375,7 +2375,7 @@
 			}
 
 			#footer-wrapper {
-				padding: 4em 2em 4em 2em;
+				padding: 0em 0em 0em 0em;
 			}
 
 		/* Header */
@@ -2987,3 +2987,5 @@
 			}
 
 	}
+
+a {text-decoration:none;}

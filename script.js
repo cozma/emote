@@ -63,6 +63,7 @@ function getMostLikelyEmotion (data){
         });
 
     var highestScore = Math.max.apply(Math, scores);
+
     makeChart(emotionScores);
 
     console.log(emotionScores);
@@ -79,8 +80,8 @@ function makeChart(emotionScores){
     var myChart = new Chart(ctx, {
         type: 'polarArea',
         data: {
-            labels: ["anger", "contempt", "disgust", "fear", "happiness",
-                "neutral", "sadness", "surprise"],
+            labels: ["Anger", "Contempt", "Disgust", "Fear", "Happiness",
+                "Neutral", "Sadness", "Surprise"],
             datasets: [{
                 backgroundColor: [
                     "#2ecc71",
@@ -97,10 +98,33 @@ function makeChart(emotionScores){
                     emotionScores["happiness"], emotionScores["neutral"],
                     emotionScores["sadness"], emotionScores["surprise"]]
             }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        min: 0,
+                        max: 0.1
+                    }
+                }]
+            }
         }
     });
 
     //console.log(getEmotionScore(0));
+}
+
+function hideHint(){
+    var hintText = document.getElementById("hint");
+    hintText.innerHTML = "<br>";
+    $(".hint").typed({
+        strings: ["Here are all the emotions we found.  :)"],
+        typeSpeed: 20,
+        startDelay: 5,
+        cursorChar: ""
+    });
+
 }
 
 
