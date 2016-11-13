@@ -66,6 +66,8 @@ function getMostLikelyEmotion (data){
     var highestScore = Math.max.apply(Math, scores);
 
     makeChart(emotionScores);
+    makeSumChart();
+    makeGroupChart();
 
     console.log(emotionScores);
 
@@ -79,6 +81,7 @@ function getMostLikelyEmotion (data){
 function makeChart(emotionScores){
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
+        label: "Todays Emotions",
         type: 'polarArea',
         data: {
             labels: ["Anger", "Contempt", "Disgust", "Fear", "Happiness",
@@ -116,6 +119,120 @@ function makeChart(emotionScores){
     //console.log(getEmotionScore(0));
 }
 
+function makeSumChart(){
+    var ctx = document.getElementById("sumChart").getContext('2d');
+    var sumChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Anger", "Contempt", "Disgust", "Fear", "Happiness",
+                "Neutral", "Sadness", "Surprise"],
+            datasets: [{
+                label: "1 Month of Emotions",
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data:[0.05, 0.1,
+                    0.02, 0.08,
+                    0.6, 0.3,
+                    0.09, 0.05]
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        min: 0,
+                        max: 1
+                    }
+                }]
+            }
+        }
+    });
+
+    //console.log(getEmotionScore(0));
+}
+
+function makeGroupChart(){
+    showPool();
+    var ctx = document.getElementById("groupChart").getContext('2d');
+    var groupChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Anger", "Contempt", "Disgust", "Fear", "Happiness",
+                "Neutral", "Sadness", "Surprise"],
+            datasets: [{
+                label: "1 Month of Emotions",
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data:[0.05, 0.1,
+                    0.02, 0.08,
+                    0.6, 0.3,
+                    0.09, 0.05]
+            }, {
+                label: "General Average",
+                backgroundColor: "rgba(99,200,30,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data:[0.1, 0.05,
+                    0.04, 0.06,
+                    0.4, 0.3,
+                    0.09, 0.02]
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        min: 0,
+                        max: 1
+                    }
+                }]
+            }
+        }
+    });
+
+    //console.log(getEmotionScore(0));
+}
+
 function hideHint(){
     var hintText = document.getElementById("hint");
     hintText.innerHTML = "<br>";
@@ -123,6 +240,18 @@ function hideHint(){
         strings: ["Here are all the emotions we found.  :)"],
         typeSpeed: 20,
         startDelay: 5,
+        cursorChar: ""
+    });
+
+}
+
+function showPool(){
+    var hintText = document.getElementById("userPool");
+    hintText.innerHTML = "<br>";
+    $(".userPool").typed({
+        strings: ["Check out how you stand against other users."],
+        typeSpeed: 20,
+        startDelay: 20,
         cursorChar: ""
     });
 
