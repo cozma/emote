@@ -1,5 +1,6 @@
 var API_KEY = "9992d8dcc5424933ab6f22d5d2fa0777";
 
+
 $(function(){
     $(".camera-icon").on('click', function(){
         $("input.upload").trigger("click");

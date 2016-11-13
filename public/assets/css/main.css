@@ -2281,7 +2281,7 @@
 	}
 
 		#footer header.major {
-			margin-bottom: 0em;
+			margin-bottom: 1em;
 		}
 
 /* Copyright */
@@ -2330,7 +2330,7 @@
 			}
 
 			#footer-wrapper {
-				padding: 0em 0 0em 0;
+				padding: 5em 0 5em 0;
 			}
 
 	}
@@ -2375,7 +2375,7 @@
 			}
 
 			#footer-wrapper {
-				padding: 0em 0em 0em 0em;
+				padding: 4em 2em 4em 2em;
 			}
 
 		/* Header */

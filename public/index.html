@@ -13,6 +13,43 @@
 		<script src="webcam.js"></script>
         <script src="Chart.js"></script>
         <script src="typed.js"></script>
+        <script src="firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-messaging.js"></script>
+
+        <script>
+            var config = {
+                apiKey: "AIzaSyBK9ot4uWKKjtXzXC37uz6M-ZTsBYJpPd0",
+                authDomain: "sensible-ae99b.firebaseapp.com",
+                databaseURL: "https://sensible-ae99b.firebaseio.com",
+                storageBucket: "sensible-ae99b.appspot.com",
+                messagingSenderId: "806312686114"
+            };
+            firebase.initializeApp(config);
+
+            var provider = new firebase.auth.GoogleAuthProvider();
+
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                var token = result.credential.accessToken;
+                // The signed-in user info.
+                var user = result.user;
+                // ...
+            }).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+            });
+
+
+        </script>
 
     </head>
 	<body class="homepage">
@@ -25,8 +62,8 @@
 
 					</div>
 	                    <section id="hero" class="container">
-							<header>
-								<h5 class="element" style="font-size: 120px;"></h5>
+							<header style="font-size: 7vw;">
+								<h5 class="element" ></h5>
 							</header>
 
 						</section>
@@ -95,7 +132,7 @@
 							<section  class="6u 12u(narrower) feature">
                                 <br>
                                 <canvas id="myChart"></canvas>
-                                <h2 class="hint" id="hint" >Use your webcam to take a photo.</h2>
+                                <h2 class="hint" id="hint" style="font-size: 2vw;" >Use your webcam to take a photo.</h2>
 
                                 <script>
                                     $(function(){
